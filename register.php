@@ -32,7 +32,7 @@
                 <input type="hidden" name="sign" value="2">
             </div>
             <input type="submit" name="sign-up" value="Sign Up">
-            <a href="../login" class="left">Login</a>
+            <a href="../login-system" class="left">Login</a>
         </form>
 
         <br><br><div class="error-field">

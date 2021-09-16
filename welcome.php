@@ -11,7 +11,7 @@
     }
 
     if(!isset($_SESSION['id'])){
-        header('location: ../login');
+        header('location: ../login-system');
         die();
     }
 

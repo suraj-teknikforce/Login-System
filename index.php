@@ -18,7 +18,7 @@
         <p>Welcome to Teknikforce</p>
         <form method="POST" id="loginForm">
             <div class="inputBox">
-                <input type="email" name="email" onkeyup="this.setAttribute('value', this.value);" value="" required >
+                <input type="email" name="email" id="email" onkeyup="this.setAttribute('value', this.value);" value="" required >
                 <label>Email</label>
             </div>
             <div class="inputBox">
@@ -46,12 +46,14 @@
         $(document).ready(function(){ error.style.display = "none"; });
 
         jQuery('#loginForm').on('submit', function(e){
+
             jQuery.ajax({
                 url: 'includes/login.php',
                 type: 'POST',
                 data: jQuery('#loginForm').serialize(),
                 success: function(result){
                     if(result == 1){
+                        error.innerHTML = "";
                         window.open('welcome.php');
                     }
                     
@@ -63,6 +65,22 @@
             });
             e.preventDefault();
         });
+
+        function myFunction(){
+            var email = document.getElementById("email").value;
+            var id = document.getElementById("hiddenId").value;
+            error.innerHTML = "Please wait.";
+
+            jQuery.ajax({
+                url: 'includes/login.php',
+                type: 'POST',
+                data: {email : email, sign:id},
+                success: function(result){
+                    error.style.cssText = "display: block; background: #F1F0E2; padding: 5px; border: 1px solid #dadce0; -webkit-border-radius: 8px; border-radius: 8px;";
+                    error.innerHTML = result;
+                }
+            });
+        }
     </script>
 </body>
 </html>

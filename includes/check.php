@@ -3,10 +3,7 @@
     date_default_timezone_set("Asia/Kolkata");
 
     $id = mysqli_real_escape_string($con, $_GET['id']);
-    $sql = "SELECT * FROM userlogin WHERE verificationId='$id'";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $result = mysqli_query($con, "SELECT * FROM userlogin WHERE verificationId='$id' AND active=0 AND NOW() <= DATE_ADD(createdDate, INTERVAL 24 HOUR)");
+    $result = mysqli_query($con, "SELECT * FROM userlogin WHERE verificationId='$id' AND active=0 AND NOW() <= DATE_ADD(createdDate, INTERVAL 15 MINUTE)");
     $count = mysqli_num_rows($result);
     ?>
 
@@ -16,7 +13,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title></title>
+            <title>Verification</title>
             
             <!-- CSS Files -->
             <link rel="stylesheet" href="../assets/style.css">

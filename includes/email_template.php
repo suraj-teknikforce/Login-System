@@ -69,7 +69,7 @@
         <h2>Verification</h2>
         <p>
             Hello {TO_NAME} <br><br>
-            Please confirm your account by clicking the button below. Code is valid only for 24 Hours. <br><br>
+            Please confirm your account by clicking the button below. Code is valid only for 15 Minutes. <br><br>
             <a href='localhost/teknikforce/Login/includes/check.php?id={VERIFICATION_ID}'>Click Here</a>
         </p>
     </div></center>
