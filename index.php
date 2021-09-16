@@ -8,6 +8,8 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/style.css">
+
+    <!-- JQuery File -->
     <script src="assets/jquery.min.js"></script>
 </head>
 <body>
@@ -42,15 +44,21 @@
         var error = document.getElementById("error");
 
         $(document).ready(function(){ error.style.display = "none"; });
-            
+
         jQuery('#loginForm').on('submit', function(e){
             jQuery.ajax({
                 url: 'includes/login.php',
                 type: 'POST',
                 data: jQuery('#loginForm').serialize(),
                 success: function(result){
-                    error.style.cssText = "display: block; background: #F1F0E2; padding: 5px; border: 1px solid #dadce0; -webkit-border-radius: 8px; border-radius: 8px;";
-                    error.innerHTML = result;
+                    if(result == 1){
+                        window.open('welcome.php');
+                    }
+                    
+                    else{
+                        error.style.cssText = "display: block; background: #F1F0E2; padding: 5px; border: 1px solid #dadce0; -webkit-border-radius: 8px; border-radius: 8px;";
+                        error.innerHTML = result;
+                    }
                 }
             });
             e.preventDefault();

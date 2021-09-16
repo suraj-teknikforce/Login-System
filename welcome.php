@@ -1,7 +1,11 @@
 <?php
+    include 'includes/connection.php';
     session_start();
 
     if(isset($_POST['logout'])){
+        $id = $_SESSION['id'];
+        $res = mysqli_query($con, "UPDATE userlogin SET isLogin = '0' WHERE id = '$id'");
+        
         session_destroy();
         echo "<script>window.close();</script>";
     }

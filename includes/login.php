@@ -24,9 +24,14 @@
                 }
 
                 else{
-                    session_start();
-	        	    $_SESSION['id'] = $row['id'];
-                    echo 1;
+                    if($row['isLogin'] == 0){
+	                    $res = mysqli_query($con, "UPDATE userlogin SET isLogin = '1' WHERE email = '$email'");
+                        session_start();
+	        	        $_SESSION['id'] = $row['id'];
+                        echo 1;
+                    }
+
+                    else echo "This account is logged in another window or system. <br>Please logout from there.";
                 }  
             }
 
