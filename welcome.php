@@ -1,0 +1,41 @@
+<?php
+    session_start();
+
+    if(isset($_POST['logout'])){
+        session_destroy();
+        echo "<script>window.close();</script>";
+    }
+
+    if(!isset($_SESSION['id'])){
+        header('location: ../login');
+        die();
+    }
+
+    else{
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <title>Welcome</title>
+
+            <link rel="stylesheet" href="assets/style.css">
+        </head>
+        <body>
+        <div class="box">
+            <h2>Hello, welcome to Teknikforce.</h2>
+            <br>
+            <form method="POST">
+                <p>
+                    <input type="submit" name="logout" value="Logout">
+                </p>
+            </form>
+        </div>
+        </body>
+        </html>
+        <?php
+    }
+?>
